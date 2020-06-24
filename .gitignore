@@ -5,6 +5,4 @@ __pycache
 .env.dev.db
 .env.prod
 .env.prod.db
-/web_app
-#/web_app/env
-/nginx
+/web_app/env
