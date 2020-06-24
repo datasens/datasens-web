@@ -1,0 +1,5 @@
+Number Temperature "[%.1f°C]" <temperature> {channel="mqtt:topic:7cb3a67c:temperature" [profile="offset"]}
+Number Humidity "[%.0f%%]" <humidity> {channel="mqtt:topic:7cb3a67c:humidity" [profile="offset"]}
+Number Lux "[%.0flux]" <light> {channel="mqtt:topic:7cb3a67c:lux" [profile="offset"]}
+Number Pressure "[%.0fmPA]" <pressure> {channel="mqtt:topic:7cb3a67c:pressure" [profile="offset"]}
+DateTime Date "Date [%1$tA, %1$td.%1$tm.%1$tY %1$tH:%1$tM]" {channel="ntp:ntp:local:string" [profile="timestamp-change"]}

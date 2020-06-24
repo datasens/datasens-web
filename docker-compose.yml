@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mqtt_broker:
+    build: ./mqtt_broker
+    networks:
+      network_1:
+        ipv4_address: 172.16.1.2
+    ports:
+      # The MQTT port
+      - "1883:1883"
+      # The port of the dashboard 
+      - "18083:18083"
+  
+  openhab_app:
+    build: ./openhab_app
+    networks:
+      network_1:
+        ipv4_address: 172.16.1.3
+    ports:
+      # The HTTP port of the web interface
+      - "18080:8080"
+      # The HTTPS port of the web interface
+      - "18443:18443"
+      # The SSH port of the Console
+      - "18101:8101"
+      # The LSP port for validating rules
+      - "15007:5007"
+
+  # web_app:
+  #   build: ./web_app
+  #   networks:
+  #     network_1:
+  #       ipv4_address: 172.16.1.4
+  #   command: python manage.py runserver 0.0.0.0:8000
+  #   volumes:
+  #     - ./web_app/core/:/home/web_app/
+  #   ports:
+  #     - 8000:8000
+  #   env_file:
+  #     - ./.env.dev
+  #   depends_on:
+  #     - db
+
+  # db:
+  #   image: postgres:12.3-alpine
+  #   networks:
+  #     network_1:
+  #       ipv4_address: 172.16.1.5
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data/
+  #   env_file:
+  #   - ./.env.dev.db
+
+# volumes:
+#   postgres_data:
+
+networks:
+  network_1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.1.0/24
+        gateway: 172.16.1.1

@@ -1,0 +1,11 @@
+sitemap default label="My home" {
+    Frame label="Date" {
+        Text item=Date
+    }
+    Frame label="Home status" {
+        Text item=Temperature label="Temperature [%.1f°C]" icon="temperature"
+        Text item=Humidity label="Humidity [%.0f%%]" icon="humidity"
+        Text item=Lux label="Lux [%.0flux]" icon="light"
+        Text item=Pressure label="Pressure [%.0fmPA]" icon="pressure"
+        }
+}
